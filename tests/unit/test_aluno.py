@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock
-from aluno.aluno import Aluno
+from aluno.aluno import Aluno, contar_aprovados
 
 
 # =============================================================
@@ -54,6 +54,34 @@ def test_calcular_media_arredondada_arredonda_para_cima_corretamente():
 
 # Requisito 1 — contar_aprovados(lista_de_alunos) -> int
 # Escreva os testes ANTES de implementar a função
+
+def test_contar_aprovados_todos_aprovados():
+    alunos = [
+        Aluno(nome="A", notas=[8, 8, 8, 8]),
+        Aluno(nome="B", notas=[9, 9, 9, 9]),
+    ]
+    assert contar_aprovados(alunos) == 2
+
+
+def test_contar_aprovados_todos_reprovados():
+    alunos = [
+        Aluno(nome="A", notas=[3, 3, 3, 3]),
+        Aluno(nome="B", notas=[2, 2, 2, 2]),
+    ]
+    assert contar_aprovados(alunos) == 0
+
+
+def test_contar_aprovados_lista_mista():
+    alunos = [
+        Aluno(nome="A", notas=[8, 8, 8, 8]),
+        Aluno(nome="B", notas=[3, 3, 3, 3]),
+        Aluno(nome="C", notas=[7, 7, 7, 7]),
+    ]
+    assert contar_aprovados(alunos) == 2
+
+
+def test_contar_aprovados_lista_vazia():
+    assert contar_aprovados([]) == 0
 
 
 # Requisito 2 — situacao_final(total_aulas) -> str
