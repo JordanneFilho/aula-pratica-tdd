@@ -21,6 +21,14 @@ class Aluno:
     def calcular_media_arredondada(self) -> float:
         return round(sum(self.notas) / len(self.notas))
 
+    def situacao_final(self, total_aulas: int) -> str:
+        percentual_faltas = self.faltas / total_aulas
+        if percentual_faltas > 0.25:
+            return "Reprovado por falta"
+        if self.calcular_media() >= 6.0:
+            return "Aprovado"
+        return "Reprovado por nota"
+
 
 def contar_aprovados(alunos: list) -> int:
     return sum(1 for aluno in alunos if aluno.situacao() == "Aprovado")
