@@ -19,4 +19,4 @@ class Aluno:
         return min(self.notas)
 
     def calcular_media_arredondada(self) -> float:
-        return int(sum(self.notas) / len(self.notas))
+        return round(sum(self.notas) / len(self.notas))
