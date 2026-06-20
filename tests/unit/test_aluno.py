@@ -8,7 +8,17 @@ from aluno.aluno import Aluno
 # Escreva um teste para cada bug descrito no guia da atividade.
 # =============================================================
 
-#
+# --- Bug 1: calcular_media divide por 4 fixo, em vez de len(notas) ---
+
+def test_calcular_media_aluno_aprovado(aluno_aprovado):
+    # notas = [8, 9, 7, 8] -> soma 32 / 4 notas = 8.0
+    assert aluno_aprovado.calcular_media() == 8.0
+
+
+def test_calcular_media_com_quantidade_de_notas_diferente_de_quatro():
+    aluno = Aluno(nome="Pedro", notas=[10, 10, 10])
+    # soma 30 / 3 notas = 10.0 (o bug usa /4 fixo e daria 7.5)
+    assert aluno.calcular_media() == 10.0
 
 # =============================================================
 # PARTE 2 — Implemente com TDD
