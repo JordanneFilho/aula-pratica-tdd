@@ -34,6 +34,19 @@ def test_menor_nota(aluno_aprovado):
     # notas = [8, 9, 7, 8] -> a menor é 7
     assert aluno_aprovado.menor_nota() == 7
 
+
+# --- Bug 4: calcular_media_arredondada usa int() (trunca) em vez de round() ---
+
+def test_calcular_media_arredondada_aluno_reprovado(aluno_reprovado):
+    # notas = [4, 3, 5, 4] -> soma 16 / 4 = 4.0 -> arredondado 4
+    assert aluno_reprovado.calcular_media_arredondada() == 4
+
+
+def test_calcular_media_arredondada_arredonda_para_cima_corretamente():
+    aluno = Aluno(nome="Ana", notas=[7, 8, 8])
+    # soma 23 / 3 = 7.666... -> arredondado deveria ser 8 (int() trunca para 7)
+    assert aluno.calcular_media_arredondada() == 8
+
 # =============================================================
 # PARTE 2 — Implemente com TDD
 # Siga o ciclo: 🔴 escreva o teste → 🟢 implemente → 🟡 refatore
