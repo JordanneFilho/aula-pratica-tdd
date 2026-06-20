@@ -16,7 +16,7 @@ class Aluno:
         return max(self.notas)
 
     def menor_nota(self) -> float:
-        return max(self.notas)
+        return min(self.notas)
 
     def calcular_media_arredondada(self) -> float:
         return int(sum(self.notas) / len(self.notas))
