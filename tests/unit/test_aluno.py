@@ -27,6 +27,13 @@ def test_situacao_aluno_com_media_exatamente_seis_deve_ser_aprovado():
     aluno = Aluno(nome="Carlos", notas=[6, 6, 6, 6])
     assert aluno.situacao() == "Aprovado"
 
+
+# --- Bug 3: menor_nota retorna max(notas) em vez de min(notas) ---
+
+def test_menor_nota(aluno_aprovado):
+    # notas = [8, 9, 7, 8] -> a menor é 7
+    assert aluno_aprovado.menor_nota() == 7
+
 # =============================================================
 # PARTE 2 — Implemente com TDD
 # Siga o ciclo: 🔴 escreva o teste → 🟢 implemente → 🟡 refatore
