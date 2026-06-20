@@ -8,7 +8,7 @@ class Aluno:
         return sum(self.notas) / len(self.notas)
 
     def situacao(self) -> str:
-        if self.calcular_media() > 6.0:
+        if self.calcular_media() >= 6.0:
             return "Aprovado"
         return "Reprovado"
 
