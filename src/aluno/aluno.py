@@ -5,7 +5,7 @@ class Aluno:
         self.faltas = faltas
 
     def calcular_media(self) -> float:
-        return sum(self.notas) / 4 
+        return sum(self.notas) / len(self.notas)
 
     def situacao(self) -> str:
         if self.calcular_media() > 6.0:
